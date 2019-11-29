@@ -37,6 +37,6 @@
                             </xsl:for-each>
                         </xsl:for-each>
                     </tbody>
-                </table>
+                </table><br/>
     </xsl:template>
 </xsl:stylesheet>
