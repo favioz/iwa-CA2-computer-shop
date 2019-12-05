@@ -1,71 +1,65 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<cafemenu>
-  <section name="Side Dishes">
-    <entree vegetarian="true">
-      <item>Potato Salad</item>
-      <price>4.95</price>
+<products>
+  <section name="Laptops">
+    <entree>
+      <item>HP elitebook</item>
+      <description>Nice laptop for home or work, it has windows 10 and office installed</description>
+      <specs>15" display, i5 processor, 4gb ram, 500 HDD</specs>
+      <price>450</price>
     </entree>
     <entree>
-      <item>Paddy's French Fries</item>
-      <price>7.50</price>
+      <item>Lenovo Thinkpad</item>
+      <description>Laptop ideally for work and study, it is indestructible</description>
+      <specs>15" display, i7 processor, 8gb ram, 500 SDD</specs>
+      <price>750</price>
     </entree>
     <entree>
-      <item>Huevos Rancheros</item>
-      <price>8.50</price>
+      <item>MacBook Pro</item>
+      <price>1500</price>
+      <description>Ideally for digital designers</description>
+      <specs>500 sdd, 8 gb, i7 processor</specs>
     </entree>
   </section>
-  <section name="Breakfast">
+  <section name="RAMs">
     <entree>
-      <item>Two Eggs, any style</item>
-      <price>4.99</price>
-    </entree>
-    <entree>
-      <item>Paddy's Famous Peppers and Eggs</item>
-      <price>8.29</price>
-    </entree>
-    <entree vegetarian="true">
-      <item>Bowl of fruit</item>
-      <price>6.99</price>
-    </entree>
-    <entree vegetarian="true">
-      <item>French toast</item>
-      <price>5.25</price>
+      <item>Kinstom 8gb</item>
+      <description>Japanese technology</description>
+      <specs>8bg ram, DDR4</specs>
+      <price>50</price>
     </entree>
     <entree>
-      <item>Croissant</item>
-      <price>3.99</price>
-    </entree>
-    <entree>
-      <item>7</item>
-      <price>7</price>
+      <item>Corsa 16gb</item>
+      <description>Ram ideally for high end computer games and tasks.</description>
+      <specs>16bg ram, DDR5</specs>
+      <price>250</price>
     </entree>
   </section>
-  <section name="Lunch">
+  <section name="GPUs">
     <entree>
-      <item>Grilled Chicken Sandwich</item>
-      <price>7.99</price>
+      <item>Geforce 1100 ti</item>
+      <description>One of the lattest GPUs available on market, ideally for games.</description>
+      <specs>GPU Memory Size: 8 GB</specs>
+      <price>200</price>
     </entree>
     <entree>
-      <item>Tuna Melt</item>
-      <price>6.99</price>
-    </entree>
-    <entree vegetarian="true">
-      <item>Pasta Salad</item>
-      <price>7.39</price>
+      <item>NVIDIA GEFORCE RTX™ 2080 TI</item>
+      <description>One of the lattest GPUs available on market, ideally for games.</description>
+      <specs>Boost Clock Speed: 1635 MHz, GPU Memory Size: 11 GB</specs>
+      <price>1150</price>
     </entree>
   </section>
-  <section name="Dinner">
+  <section name="Accesories">
     <entree>
-      <item>Ribeye Steak</item>
-      <price>19.99</price>
+      <item>Mouse litbest w39</item>
+      <description>Gamers mouse.</description>
+      <specs>Wireless mouse</specs>
+      <price>50</price>
     </entree>
     <entree>
-      <item>Chilean Sea Bass</item>
-      <price>12.99</price>
-    </entree>
-    <entree vegetarian="true">
-      <item>Linguini with Grilled Porcini Mushroom</item>
-      <price>9.79</price>
+      <item>Mouse pad</item>
+      <description>Gamers mouse pad.</description>
+      <specs>Soft touch ergonomic</specs>
+      <price>10</price>
     </entree>
   </section>
-</cafemenu>
+</products>
