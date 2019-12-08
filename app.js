@@ -1,3 +1,5 @@
+//code mainly done by Mikhail Timotev
+
 var http = require('http'),
     path = require('path'),
     express = require('express'),
@@ -5,13 +7,16 @@ var http = require('http'),
     xmlParse = require('xslt-processor').xmlParse,
     xsltProcess = require('xslt-processor').xsltProcess,
     xml2js = require('xml2js');
+    expAutoSan = require('express-autosanitizer');
 
 var router = express();
 var server = http.createServer(router);
 
 router.use(express.static(path.resolve(__dirname, 'views')));
 router.use(express.urlencoded({extended: true}));
+
 router.use(express.json());
+router.use(expAutoSan.allUnsafe);
 
 // Function to read in XML file and convert it to JSON
 function xmlFileToJs(filename, cb) {
@@ -40,8 +45,8 @@ router.get('/get/html', function(req, res) {
 
     res.writeHead(200, {'Content-Type': 'text/html'});
 
-    var xml = fs.readFileSync('PaddysCafe.xml', 'utf8');
-    var xsl = fs.readFileSync('PaddysCafe.xsl', 'utf8');
+    var xml = fs.readFileSync('computerShop.xml', 'utf8');
+    var xsl = fs.readFileSync('computerShop.xsl', 'utf8');
     var doc = xmlParse(xml);
     var stylesheet = xmlParse(xsl);
 
@@ -56,18 +61,7 @@ router.get('/get/html', function(req, res) {
 router.post('/post/json', function(req, res) {
 
   // Function to read in a JSON file, add to it & convert to XML
-  function appendJSON(obj) {
-    console.log(obj);
-    // Function to read in XML file, convert it to JSON, add a new object and write back to XML file
-    xmlFileToJs('PaddysCafe.xml', function(err, result) {
-      if (err) throw (err);
-      result.products.section[obj.sec_n].entree.push({'item': obj.item, 'price': obj.price, 'description': obj.description, 'specs': obj.specs});
-      console.log(result);
-      jsToXmlFile('PaddysCafe.xml', result, function(err) {
-        if (err) console.log(err);
-      })
-    })
-  }
+
 
   // Call appendJSON function and pass in body of the current POST request
   appendJSON(req.body);
@@ -77,27 +71,58 @@ router.post('/post/json', function(req, res) {
 
 });
 
-// POST request to add to JSON & XML files
-router.post('/post/delete', function(req, res) {
-
-  // Function to read in a JSON file, add to it & convert to XML
-  function deleteJSON(obj) {
-    // Function to read in XML file, convert it to JSON, delete the required object and write back to XML file
-    xmlFileToJs('PaddysCafe.xml', function(err, result) {
+  function appendJSON(obj) {
+    console.log(obj);
+    // Function to read in XML file, convert it to JSON, add a new object and write back to XML file
+    xmlFileToJs('computerShop.xml', function(err, result) {
       if (err) throw (err);
-      //This is where we delete the object based on the position of the section and position of the entree, as being passed on from index.html
-      delete result.products.section[obj.section].entree[obj.entree];
-      //This is where we convert from JSON and write back our XML file
-      jsToXmlFile('PaddysCafe.xml', result, function(err) {
+      result.products.section[obj.sec_n].entree.push({'item': obj.item, 'price': obj.price, 'description': obj.description, 'specs': obj.specs});
+      console.log(result);
+
+      jsToXmlFile('computerShop.xml', result, function(err) {
         if (err) console.log(err);
       })
     })
   }
 
+  function deleteJSON(obj) {
+    // Function to read in XML file, convert it to JSON, delete the required object and write back to XML file
+    xmlFileToJs('computerShop.xml', function(err, result) {
+      if (err) throw (err);
+      //This is where we delete the object based on the position of the section and position of the entree, as being passed on from index.html
+      delete result.products.section[obj.section].entree[obj.entree];
+      //This is where we convert from JSON and write back our XML file
+      jsToXmlFile('computerShop.xml', result, function(err) {
+        if (err) console.log(err);
+      })
+    })
+  }
+
+  // I have moved the functions for append and delete outside the router.post functions so I can reuse them
+  //anytime I want and mainly because I was planning to applied UPDATE by first using the delete method
+  //and second by using the append method using atributes from the UPDATE form
+
+
+// POST request to delete
+router.post('/post/delete', function(req, res) {
+    // Function to read in a JSON file, add to its & convert to XML
+
   // Call appendJSON function and pass in body of the current POST request
   deleteJSON(req.body);
+    res.redirect('back');
+});
+
+router.post('/post/update', function(req, res) {
+//applying delete and update
+  deleteJSON(req.body);
+//at the moment of adding from the UPDATE form I could get the form attributes to be automatically
+//set up after clicking in a row. I tryed to implement this in the table.js file in the .click of the row.
+  appendJSON
 
 });
+
+
+
 
 server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function() {
   var addr = server.address();

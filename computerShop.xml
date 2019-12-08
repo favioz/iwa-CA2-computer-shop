@@ -14,10 +14,10 @@
       <price>750</price>
     </entree>
     <entree>
-      <item>MacBook Pro</item>
-      <price>1500</price>
-      <description>Ideally for digital designers</description>
-      <specs>500 sdd, 8 gb, i7 processor</specs>
+      <item>MacBook pro</item>
+      <price>2500</price>
+      <description>Ideal laptop for digital designers</description>
+      <specs>i7 processor, 8gb ram, 500 gb SDD</specs>
     </entree>
   </section>
   <section name="RAMs">
@@ -28,10 +28,10 @@
       <price>50</price>
     </entree>
     <entree>
-      <item>Corsa 16gb</item>
-      <description>Ram ideally for high end computer games and tasks.</description>
-      <specs>16bg ram, DDR5</specs>
-      <price>250</price>
+      <item>corsair</item>
+      <price>800</price>
+      <description>very recommendable for gaming</description>
+      <specs>32 gb</specs>
     </entree>
   </section>
   <section name="GPUs">

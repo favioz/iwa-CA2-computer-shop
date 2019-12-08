@@ -17,7 +17,7 @@ body {
 }
 table, th, td {
      border-collapse: collapse;
-     border: 1px solid black;
+     border: 1px solid #0651f3;
      text-align: center;
 }
  table {
@@ -33,6 +33,6 @@ table, th, td {
      font-weight: bold;
 }
 .selected {
-            background-color: #dc3545;
+            background-color: #0651f3;
             color: #FFF;
 }

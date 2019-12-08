@@ -13,7 +13,7 @@
 
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/PaddysCafeStyles.css" rel="stylesheet">
+  <link href="css/computerShop.css" rel="stylesheet">
 </head>
 
 <body>
@@ -51,7 +51,7 @@
     <div class="row">
       <div class="col-lg-12 text-left">
         <h1 class="mt-5">Welcome to Ale's Computer Shop</h1>
-        <p class="lead">Select the products you want to buy from the list.</p>
+        <p class="lead">Select the products you want to delete from the list.</p>
       </div>
         <div id="results" class="col-lg-8 text-center order-3"></div>
         <div class="col-lg-4 text-center order-2">
@@ -76,10 +76,35 @@
                 <div class="form-group">
                     <input class="form-control" type="text" name="specs" placeholder="Specs">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-block btn-primary">Submit</button>
             </form>
             <button id="delete" class="btn btn-block btn-danger">Delete</button>
             <p class="text-muted">To delete an entree, click the required row first</p>
+            
+            <form enctype="application/json" action="/post/update" method="post">
+                <div class="form-group">
+                    <select id="secUpdate" class="form-control" name="sec_n">
+                        <option value="0">Laptops</option>
+                        <option value="1">RAMs</option>
+                        <option value="2">GPUs</option>
+                        <option value="3">Accesories</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input id="itemUpdate" class="form-control" type="text" name="item">
+                </div>
+                <div class="form-group">
+                    <input id="priceUpdate" class="form-control" type="text" name="price">
+                </div>
+                <div class="form-group">
+                    <input id="descriptionUpdate"class="form-control" type="text" name="description">
+                </div>
+                <div class="form-group">
+                    <input id="specsUpdate"class="form-control" type="text" name="specs">
+                </div>
+                <button type="submit" class="btn btn-block btn-primary">Update</button>
+            </form>
+
         </div>
     </div>
   </div>
