@@ -1,38 +1,41 @@
 var Product = require('../models/product');
 
-exports.createProduct = async function(req, res) { 
+exports.createProduct = async (req, res) =>{ 
     var newProduct = new Product(req.body);
-    newProduct.save(function (err, product) { 
-        if (err) { 
-            res.status(400).json(err);
-            alert("Error at creating product");
-        }
-
-        res.json(product); 
-});
+    
+    try{
+        await newProduct.save();        
+    }catch{
+        alert("Something happend at creating product");
+    }
+    res.render('index')
 };
 
-exports.getProducts = async function(req, res) {
-  
-   var products = await Product.find({});
-   res.render(index)
+exports.getProducts = async =>(req, res) {
+  try{
+    var products = await Product.find({});
+  }catch{
+    alert("Something happend at retrieving products");
+  }
+   
+   res.render(index);
 };
 
 
-exports.deleteProduct = async function(req, res) {
-  Product.findByIdAndRemove(req.params.id, function (err, product) {
-    if (err) {
-      res.status(400).json(err);
-    } 
-    res.json(product);
-  }); 
+exports.deleteProduct = async =>(req, res) {
+    try{
+        await Product.findByIdAndRemove(req.params.id)
+    }catch{
+        alert("Something happend at deleting product");
+    }
+    res.render('index')
 };
 
-exports.updateProduct = async function(req, res) {
-  Product.findByIdAndUpdate(req.params.id, function (err, product) {
-    if (err) {
-      res.status(400).json(err);
-    } 
-    res.json(product);
-  }); 
+exports.updateProduct = async =>(req, res) {
+    try{
+        await Product.findByIdAndUpdate(req.params.id);
+    }catch{
+        alert("Something happend at updating product");
+    }
+     res.render(index);
 };

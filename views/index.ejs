@@ -18,27 +18,50 @@
 			    </thead>
             <thead><tr><th>Products list</tr></th></thead>
 			<tbody>
-                 <% product.forEach(product =>{ %>
+                 <% products.forEach(product =>{ %>
                 <tr> 
                     <td><%= product.item %></td>
                     <td><%= product.section %></td>
                     <td><%= product.price %> </td>
                     <td><%= product.desc %> </td>
                     <td><%= product.spec %> </td>
-                    <td><button class="btn btn-warning edit-product">Edit</button> <button class="btn btn-danger delete-product">Delete</button><button class="btn btn-success update-product" style="display:none">Update</button> <button class="btn btn-danger cancel" style="display:none">Cancel</button></td>
-
-	</script>
-	
-	<script src="js/jquery.js"></script>
-	<script src="js/underscore/underscore.js"></script>
-	<script src="js/backbone.js"></script>
-	<script src="js/scripts.js"></script>
-</body>
-</html>
-
-                    <br>
-                 </tr>
-             <%})%>
-		</table>
-        
+                    <td>
+                        <button class="btn btn-warning edit-product">Edit</button>
+                        <form action="product/<%= product.id %>" method="delete">
+                            <button type="submit" class="btn btn-danger delete-product">Delete</button>
+                        </form> 
+                        <form action="product/<%= product.id %>" method="put">
+                            <button type="submit" class="btn btn-success update-product" style="display:none">Update</button> 
+                        </form>
+                        <button class="btn btn-danger cancel" style="display:none">Cancel</button>
+                    </td>
+                </tr>
+                <%})%>
         </div>
+
+        <div class="col-lg-4 text-center order-2">
+            <form action="/product" method="post">
+                <div class="form-group">
+                    <select class="form-control" name="sec_n">
+                        <option value="0">Laptops</option>
+                        <option value="1">RAMs</option>
+                        <option value="2">GPUs</option>
+                        <option value="3">Accesories</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="item" placeholder="Item">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="price" placeholder="Price">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="desc" placeholder="Description">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="specs" placeholder="Specs">
+                </div>
+                <button type="submit" class="btn btn-block btn-primary">Create Product</button>
+            </form>
+        </div>
+    </div>

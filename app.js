@@ -28,10 +28,12 @@ app.use(express.urlencoded({extended: true}));
 app.use(expressLayouts);
 app.use(methodOverride('_method'));
 
-app.use('/', )
+app.use('/', require('./router/home'));
+app.use(require('./router/routes'));
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(require('./router/routes'));
+
 app.use(expAutoSan.allUnsafe);
 
 app.listen
@@ -48,6 +50,4 @@ mongoose.connection.on('error', (err) => {
 });
 mongoose.connection.on('connected', () => { 
     console.log('MongoDB is successfully connected');
-    app.get('/products', productCtrl.getProducts);
-
 });
