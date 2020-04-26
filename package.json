@@ -1,0 +1,27 @@
+{
+  "name": "computershop",
+  "version": "1.0.0",
+  "description": "core code made by Mikhail Timotev",
+  "main": "app.js",
+  "dependencies": {
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "express-autosanitizer": "^1.0.1",
+    "xml2js": "^0.4.22",
+    "xslt-processor": "^0.11.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alejandro-Zeballos/computerShop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alejandro-Zeballos/computerShop/issues"
+  },
+  "homepage": "https://github.com/Alejandro-Zeballos/computerShop#readme"
+}
