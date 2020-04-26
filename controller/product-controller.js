@@ -1,6 +1,6 @@
 var Product = require('../models/product');
 
-exports.createProduct = function(req, res) { 
+exports.createProduct = async function(req, res) { 
     var newProduct = new Product(req.body);
     newProduct.save(function (err, product) { 
         if (err) { 
@@ -12,18 +12,14 @@ exports.createProduct = function(req, res) {
 });
 };
 
-exports.getProducts = function(req, res) {
-  Product.find({}, function (err, products) {
-    if (err) {
-      res.status(400).json(err); 
-    } 
-    res.render('products');
-    
-  }); 
+exports.getProducts = async function(req, res) {
+  
+   var products = await Product.find({});
+   res.render(index)
 };
 
 
-exports.deleteProduct = function(req, res) {
+exports.deleteProduct = async function(req, res) {
   Product.findByIdAndRemove(req.params.id, function (err, product) {
     if (err) {
       res.status(400).json(err);
@@ -32,7 +28,7 @@ exports.deleteProduct = function(req, res) {
   }); 
 };
 
-exports.updateProduct = function(req, res) {
+exports.updateProduct = async function(req, res) {
   Product.findByIdAndUpdate(req.params.id, function (err, product) {
     if (err) {
       res.status(400).json(err);
