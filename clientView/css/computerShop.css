@@ -15,7 +15,8 @@ header{
   height: 120px;
   align-content: center;
   color: white;
-  background-color: #337ab7;
+  background-color: #007bff;
+
 
   
 }
@@ -37,16 +38,38 @@ table, th, td {
  table {
      border-collapse: collapse;
      width:100%;
+     padding: 2em;
 }
  td, th {
      border: 1px solid #ced4da;
      padding: 0.5rem;
      text-align: left;
 }
+th{
+    color:white;
+    background-color: #007bff;
+}
  th {
      font-weight: bold;
 }
-.selected {
-            background-color: #0651f3;
-            color: #FFF;
+
+.lead{
+    color:#007bff;
+    text-align: center;
+    font-weight: bold;
+}
+
+#update-form, #create-form{
+    padding-top: 1em;
+    padding-right: 3em;
+    padding-bottom: 1em;
+    padding-left: 3em;
+}
+#update-form {
+    display : none;
+     
+}
+#results{
+    padding-top:1em;
+    padding-right: 3em;
 }
