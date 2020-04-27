@@ -4,9 +4,23 @@ html {
 }
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+margin-top: 160px;
+  
 }
-.footer {
+header{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 120px;
+  align-content: center;
+  color: white;
+  background-color: #337ab7;
+
+  
+}
+
+footer {
   position: absolute;
   bottom: 0;
   width: 100%;

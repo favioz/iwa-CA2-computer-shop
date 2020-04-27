@@ -1,45 +1,11 @@
- <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-left">
-                <h1 class="mt-5">Welcome to Ale's Computer Shop</h1>
-                <p class="lead">Input information of new product</p>
-            </div>
-        <div id="results" class="col-lg-8 text-center order-3">
-            <table class="table">
-			    <thead>
-				    <tr>
-					    <th>Item</th>
-                        <th>Type</th>
-					    <th>Price</th>
-					    <th>Description</th>
-                        <th>Specs</th>
-					    <th>Action</th>
-				    </tr>
-			    </thead>
-            <thead><tr><th>Products list</tr></th></thead>
-			<tbody>
-                 <% products.forEach(product =>{ %>
-                <tr> 
-                    <td><%= product.item %></td>
-                    <td><%= product.section %></td>
-                    <td><%= product.price %> </td>
-                    <td><%= product.desc %> </td>
-                    <td><%= product.spec %> </td>
-                    <td>
-                        <button class="btn btn-warning edit-product">Edit</button>
-                        <form action="product/<%= product.id %>" method="delete">
-                            <button type="submit" class="btn btn-danger delete-product">Delete</button>
-                        </form> 
-                        <form action="product/<%= product.id %>" method="put">
-                            <button type="submit" class="btn btn-success update-product" style="display:none">Update</button> 
-                        </form>
-                        <button class="btn btn-danger cancel" style="display:none">Cancel</button>
-                    </td>
-                </tr>
-                <%})%>
-        </div>
+ <div class="container-fluid">
 
-        <div class="col-lg-4 text-center order-2">
+    <div class="row">
+
+
+        <div class="col-lg-4 text-left order-1">
+    
+            <h3 class="lead">New product form</h3>
             <form action="/product" method="post">
                 <div class="form-group">
                     <select class="form-control" name="sec_n">
@@ -56,7 +22,7 @@
                     <input class="form-control" type="text" name="price" placeholder="Price">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="desc" placeholder="Description">
+                    <input class="form-control" type="text" name="description" placeholder="Description">
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="text" name="specs" placeholder="Specs">
@@ -64,4 +30,47 @@
                 <button type="submit" class="btn btn-block btn-primary">Create Product</button>
             </form>
         </div>
+
+        <div id="results" class="col-lg-8 text-center order-2">
+            <div id="product-list-header" class="text-left">
+            <h3>Products list</h3>
+            </div>
+            <table class="table">
+
+			    <thead>
+				    <tr>
+					    <th>Item</th>
+                        <th>Type</th>
+					    <th>Price</th>
+					    <th>Description</th>
+                        <th>Specs</th>
+					    <th>Action</th>
+				    </tr>
+			    </thead>
+
+			<tbody>
+                 <% products.forEach(product =>{ %>
+                <tr> 
+                    <td><%= product.item %></td>
+                    <td><%= product.section %></td>
+                    <td><%= product.price %> </td>
+                    <td><%= product.description %> </td>
+                    <td><%= product.specs %> </td>
+                    <td>
+                        <button class="btn btn-warning edit-product">Edit</button>
+                        <form action="product/<%= product.id %>" method="delete">
+                            <button type="submit" class="btn btn-danger delete-product">Delete</button>
+                        </form> 
+                        <form action="product/<%= product.id %>" method="put">
+                            <button type="submit" class="btn btn-success update-product" style="display:none">Update</button> 
+                        </form>
+                        <button class="btn btn-danger cancel" style="display:none">Cancel</button>
+                    </td>
+                </tr>
+                <%})%>
+            </tbody>
+        </div>
+
+        
     </div>
+</div>

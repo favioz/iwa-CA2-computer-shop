@@ -4,8 +4,6 @@ var http = require('http'),
     expressLayouts = require('express-ejs-layouts'),
     methodOverride =  require('method-override'),
     express = require('express'),
-    cors = require('cors'),
-    fs = require('fs'),
     bodyParser = require("body-parser"),
     mongoose = require('mongoose'),
     expAutoSan = require('express-autosanitizer');
@@ -15,30 +13,31 @@ var http = require('http'),
 const dotenv = require('dotenv');
 dotenv.config();
 
-const indexRouter = require('./')
 var app = express();
 var port = process.env.PORT || 3000;
-var server = http.createServer(app);
 var productCtrl = require('./controller/product-controller');
 
+app.set('view engine', 'ejs');
 app.set('views',__dirname +'/views');
 app.set('layout', 'layout');
-app.use(express.static('clientView'));
-app.use(express.urlencoded({extended: true}));
 app.use(expressLayouts);
+
+app.use(express.static('clientView'));
+app.use(bodyParser.urlencoded({extended: true}));
+
 app.use(methodOverride('_method'));
+const startRouter = require('./router/home');
+const productRouter = require('./router/routes');
 
-app.use('/', require('./router/home'));
-app.use(require('./router/routes'));
+app.use('/', startRouter);
+app.use('/product', productRouter);
+app.set('clientView', __dirname + '/public');
 
-app.use(logger('dev'));
-app.use(bodyParser.json());
 
 app.use(expAutoSan.allUnsafe);
 
-app.listen
 
-server.listen(port, function() {
+app.listen(port, function() {
     console.log("Listening on Port: " + port)
     console.log(process.env.MONGO_DB_URL)
 });
