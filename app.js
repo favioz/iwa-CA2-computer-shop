@@ -9,7 +9,7 @@ var http = require('http'),
     expAutoSan = require('express-autosanitizer');
 
 
-
+//dotenv is used for reading the .env MongoDB URL
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -44,7 +44,7 @@ app.use('/product', productRouter);
 //setting up clientViews
 app.set('clientView', __dirname + '/public');
 
-
+//using this library for sanitazing potencially dangerous input 
 app.use(expAutoSan.allUnsafe);
 
 
@@ -53,6 +53,7 @@ app.listen(port, function() {
     console.log(process.env.MONGO_DB_URL)
 });
 
+//connecting to the database with mongoose
 mongoose.connect(process.env.MONGO_DB_URL);
 mongoose.connection.on('error', (err) => { 
     console.log('Mongodb Error: ', err); 

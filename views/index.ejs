@@ -5,7 +5,7 @@
 
         <div class="col-lg-4 text-left order-1">
     
-    
+        <!--create Product form-->
             <form id=create-form action="/product" method="post">
                 <h3 class="lead">New product form</h3>
                 <div class="form-group">
@@ -30,7 +30,7 @@
                 </div>
                 <button type="submit" class="btn btn-block btn-primary">Create Product</button>
             </form>
-            <!--update form hidden-->
+        <!--update form hidden-->
             <div id=update-div display="none">
             <form id=update-form action="/product?_method=PUT" method="post">
                 <h3 class="lead">Update product Form</h3>
@@ -63,7 +63,7 @@
             </form>
             </div>
         </div>
-
+    <!--table of products loaded dinamically-->
         <div id="results" class="col-lg-8 text-center order-2">
             <table class="table">
 

@@ -29,10 +29,9 @@ exports.createProduct = async(req, res) =>{
         await newProduct.save();        
     }catch(error){
         console.log("Something happend at creating product");
-        console.log(error);
-        alert("Insert a valid price");
-        
+        console.log(error);      
     }
+    //redirecting to index page, therefore will update table
     res.redirect('/');
 };
 
@@ -41,28 +40,33 @@ exports.getProducts = async(req,res)=>{
    let productList= [];
    try{
     productList = await Product.find()
+
     res.render('index',{products:productList})
    }catch{
     console.log("Something happend at getting products")
     productList=[]
       res.render('index',{products:productList})
    }
-    //it will send to the index page when the web start
+    
+   //rendering index page, sending the fetched products
 };
 
 
+//delete product function
 exports.deleteProduct = async(req, res)=> {
     try{
         await Product.findByIdAndRemove(req.params.id)
         console.log("trying to delete product with with id " + req.params.id);
         res.redirect('/');
-    }catch{
+    }catch(error){
         console.log("something happend in deleting product")
+        console.log(error);
         res.redirect('/');
     }
     
 };
 
+//update products function
 exports.updateProduct = async(req, res)=> {
     try{
         console.log("sec index at update: " + req.body.sec_n);
