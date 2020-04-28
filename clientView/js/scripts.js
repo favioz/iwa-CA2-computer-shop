@@ -70,6 +70,7 @@ function enableEditFields(id, item, section, price, desc, specs){
     document.getElementById("update-form").style.display = "block";
     var updateForm = document.forms['update-form'];
     var sectionIndex = 0;
+    console.log("section in scripts: " + section)
     switch(section){
         case "RAMs":
         sectionIndex = 1;
@@ -77,10 +78,12 @@ function enableEditFields(id, item, section, price, desc, specs){
         case "GPUs":
         sectionIndex = 2;
         break;
-        case "Accesories":
+        case "Accessories":
         sectionIndex = 3;
         break;
     }
+
+        console.log("scripts indx after switch" + sectionIndex)
     
     updateForm.elements["sec_n"].value = sectionIndex;
     updateForm.elements["itemName"].value = item;

@@ -3,19 +3,18 @@ var Product = require('../models/product');
 
 //create product function
 exports.createProduct = async(req, res) =>{ 
-     console.log("description: " + req.body.description);
+     console.log("section: " + req.body.sec_n);
         var sectionName='Laptops';
-        switch(req.body.sec_n){
-            case 1:
+        
+        if(req.body.sec_n == 1){
             sectionName = 'RAMs';
-            break;
-            case 2:
+        }else if(req.body.sec_n == 2){
             sectionName = 'GPUs';
-            break;
-            case 3:
-            sectionName = 'Accesories';
-            break;
+        }else if(req.body.sec_n == 3){
+            sectionName = 'Accessories';
         }
+
+        console.log(sectionName);
 
         var newProduct = new Product({
             
@@ -26,12 +25,12 @@ exports.createProduct = async(req, res) =>{
             description: req.body.description
             
         });
-    var newProduct = new Product(req.body);
     try{
         await newProduct.save();        
-    }catch{
+    }catch(error){
         console.log("Something happend at creating product");
-        console.error();
+        console.log(error);
+        alert("Insert a valid price");
         
     }
     res.redirect('/');
@@ -66,18 +65,15 @@ exports.deleteProduct = async(req, res)=> {
 
 exports.updateProduct = async(req, res)=> {
     try{
-        console.log("description: " + req.body.id);
+        console.log("sec index at update: " + req.body.sec_n);
         var sectionName='Laptops';
-        switch(req.body.sec_n){
-            case 1:
+
+        if(req.body.sec_n == 1){
             sectionName = 'RAMs';
-            break;
-            case 2:
+        }else if(req.body.sec_n == 2){
             sectionName = 'GPUs';
-            break;
-            case 3:
-            sectionName = 'Accesories';
-            break;
+        }else if(req.body.sec_n == 3){
+            sectionName = 'Accessories';
         }
 
         let newProduct = await Product.findById(req.body.id);

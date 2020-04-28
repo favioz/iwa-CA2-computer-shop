@@ -15,22 +15,33 @@ dotenv.config();
 
 var app = express();
 var port = process.env.PORT || 3000;
+
+//setting up the product controller
 var productCtrl = require('./controller/product-controller');
 
+//using ejs as view engine
 app.set('view engine', 'ejs');
 app.set('views',__dirname +'/views');
 app.set('layout', 'layout');
 app.use(expressLayouts);
 
+//pointing the client folder view
 app.use(express.static('clientView'));
 app.use(bodyParser.urlencoded({extended: true}));
 
+//method override will allow me to send a request with method attached
 app.use(methodOverride('_method'));
+
+//the home page route
 const startRouter = require('./router/home');
+
+//the router for all requests
 const productRouter = require('./router/routes');
 
 app.use('/', startRouter);
 app.use('/product', productRouter);
+
+//setting up clientViews
 app.set('clientView', __dirname + '/public');
 
 
